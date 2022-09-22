@@ -1,0 +1,129 @@
+/* 
+  CONSTANT VARIABLES
+*/
+
+// Colors
+body {
+  --page-background-color: hsl(222, 26%, 31%);
+  --keypad-background-color: hsl(224, 36%, 15%);
+
+  --switcher-background-color: hsl(224, 36%, 15%);
+  --switcher-text-color: white;
+
+  --header-text-color: white;
+
+  --screen-background-color: hsl(223, 31%, 20%);
+  --screen-text-color: white;
+
+  --button-background-color: hsl(30, 25%, 89%);
+  --button-background-hover: white;
+  --button-shadow-color: hsl(28, 16%, 65%);
+  --button-text-color: hsl(221, 14%, 31%);
+
+  --button-special-background-color: hsl(225, 21%, 49%);
+  --button-special-background-hover: hsl(224, 51%, 76%);
+  --button-special-shadow-color: hsl(224, 28%, 35%);
+  --button-special-text-color: white;
+
+  --button-accent-background-color: hsl(6, 63%, 50%);
+  --button-accent-background-hover: hsl(6, 93%, 67%);
+  --button-accent-shadow-color: hsl(6, 70%, 34%);
+  --button-accent-text-color: white;
+
+  --footer-text-color: white;
+  --footer-link-color: hsl(6, 63%, 50%);
+  --footer-link-hover: hsl(6, 93%, 67%);
+
+  --selection-color: hsl(225, 21%, 49%);
+}
+
+.theme-1 {
+  --page-background-color: hsl(0, 0%, 90%);
+  --keypad-background-color: hsl(0, 5%, 81%);
+
+  --switcher-background-color: hsl(0, 5%, 81%);
+  --switcher-text-color: hsl(60, 10%, 19%);
+
+  --header-text-color: hsl(60, 10%, 19%);
+
+  --screen-background-color: hsl(0, 0%, 93%);
+  --screen-text-color: hsl(60, 10%, 19%);
+
+  --button-background-color: hsl(45, 7%, 89%);
+  --button-background-hover: white;
+  --button-shadow-color: hsl(35, 11%, 61%);
+  --button-text-color: hsl(60, 10%, 19%);
+
+  --button-special-background-color: hsl(185, 42%, 37%);
+  --button-special-background-hover: hsl(185, 41%, 56%);
+  --button-special-shadow-color: hsl(185, 58%, 25%);
+  --button-special-text-color: white;
+
+  --button-accent-background-color: hsl(6, 63%, 50%);
+  --button-accent-background-hover: hsl(25, 100%, 61%);
+  --button-accent-shadow-color: hsl(25, 99%, 27%);
+  --button-accent-text-color: white;
+
+  --footer-text-color: hsl(60, 10%, 19%);
+  --footer-link-color: hsl(6, 63%, 50%);
+  --footer-link-hover: hsl(25, 100%, 61%);
+
+  --selection-color: hsl(185, 41%, 56%);
+}
+
+.theme-2 {
+  --page-background-color: hsl(268, 75%, 9%);
+  --keypad-background-color: hsl(268, 71%, 12%);
+
+  --switcher-background-color: hsl(268, 71%, 12%);
+  --switcher-text-color: hsl(52, 100%, 62%);
+
+  --header-text-color: hsl(52, 100%, 62%);
+
+  --screen-background-color: hsl(268, 71%, 12%);
+  --screen-text-color: hsl(52, 100%, 62%);
+
+  --button-background-color: hsl(268, 47%, 21%);
+  --button-background-hover: hsl(268, 54%, 44%);
+  --button-shadow-color: hsl(290, 70%, 36%);
+  --button-text-color: hsl(52, 100%, 62%);
+
+  --button-special-background-color: hsl(281, 89%, 26%);
+  --button-special-background-hover: hsl(285, 91%, 52%);
+  --button-special-shadow-color: hsl(280, 56%, 44%);
+  --button-special-text-color: white;
+
+  --button-accent-background-color: hsl(176, 100%, 44%);
+  --button-accent-background-hover: hsl(177, 100%, 79%);
+  --button-accent-shadow-color: hsl(177, 92%, 70%);
+  --button-accent-text-color: hsl(198, 20%, 13%);
+
+  --footer-text-color: hsl(52, 100%, 62%);
+  --footer-link-color: hsl(177, 92%, 70%);
+  --footer-link-hover: hsl(177, 100%, 79%);
+
+  --selection-color: hsl(268, 54%, 44%);
+}
+
+// Lengths
+
+$calculator-width: 540px;
+
+// Fonts
+
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
+
+body {
+  --font-family: "League Spartan", sans-serif;
+}
+
+/* 
+  OTHER
+*/
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+}

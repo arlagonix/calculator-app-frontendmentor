@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../src/assets/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="../public/index.css" />
+    <title>Calculator app</title>
+    <script src="../src/index.js" defer type="module"></script>
+  </head>
+  <body>
+    <!-- MAIN -->
+    <main id="calculator">
+      <!-- Calculator top row -->
+      <header>
+        <h2>calc</h2>
+        <label for="switcher" class="switcher-label">THEME</label>
+        <div>
+          <div class="switcher-values">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+          </div>
+          <input
+            name="switcher"
+            id="switcher"
+            type="range"
+            min="1"
+            max="3"
+            value="1"
+          />
+        </div>
+      </header>
+
+      <!-- Calculator screen -->
+      <div id="calculator-container">
+        <span id="first-operand"></span>
+        <span id="operation"></span>
+        <input type="text" value="0" id="screen" disabled />
+      </div>
+
+      <!-- Calculator keypad -->
+      <div class="keypad">
+        <button id="num-7">7</button>
+        <button id="num-8">8</button>
+        <button id="num-9">9</button>
+        <button id="del">DEL</button>
+
+        <button id="num-4">4</button>
+        <button id="num-5">5</button>
+        <button id="num-6">6</button>
+        <button id="plus">+</button>
+
+        <button id="num-1">1</button>
+        <button id="num-2">2</button>
+        <button id="num-3">3</button>
+        <button id="minus">-</button>
+
+        <button id="dot">.</button>
+        <button id="num-0">0</button>
+        <button id="divide">/</button>
+        <button id="times">x</button>
+
+        <button id="reset">RESET</button>
+        <button id="equals">=</button>
+      </div>
+    </main>
+
+    <!-- INSTRUCTIONS -->
+    <details>
+      <summary>Press to show / hide instructions</summary>
+      <p>
+        The toggle switch in the top right corner allows you to change the
+        theme.
+      </p>
+      <p>
+        Feel free to use your keyboard to type numbers and perform operations!
+      </p>
+      <p>
+        Press <span class="key">0</span> - <span class="key">9</span> to type
+        numbers 0-9
+      </p>
+      <p>Press <span class="key">.</span> to create float numbers</p>
+      <p>
+        Press <span class="key">+</span>, <span class="key">-</span>,
+        <span class="key">*</span>, <span class="key">/</span> to set the
+        mathematical operations
+      </p>
+      <p>
+        Press <span class="key key-accent">Enter</span> to display the result
+      </p>
+      <p>
+        Press <span class="key key-special">Backspace</span> to erase the last
+        digit from the input
+      </p>
+      <p>
+        Press <span class="key key-special">Delete</span> to clear the screen
+      </p>
+    </details>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        for
+        <a
+          href="https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29"
+          target="_blank"
+          draggable="false"
+        >
+          Frontend&nbsp;Mentor</a
+        >
+        | by&nbsp;<a
+          href="https://github.com/arlagonix"
+          target="_blank"
+          draggable="false"
+          >Alexander&nbsp;Gorbunov
+        </a>
+      </p>
+    </footer>
+  </body>
+</html>

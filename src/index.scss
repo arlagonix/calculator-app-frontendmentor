@@ -1,0 +1,387 @@
+@use "./styles/globals";
+
+body {
+  background: var(--page-background-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem; // 24px
+  transition: 1s;
+}
+
+#calculator {
+  width: 100%;
+  max-width: globals.$calculator-width;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; // 24px
+
+  header {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+  }
+
+  h2 {
+    flex-grow: 1;
+    color: var(--header-text-color);
+    font-family: var(--font-family);
+    padding-bottom: 0.5rem;
+    font-size: 2rem; // 32px
+  }
+}
+
+// https://www.w3schools.com/howto/howto_js_rangeslider.asp
+#switcher {
+  appearance: none;
+  width: 4.5rem; // 72px
+  height: 1.5rem; // 24px
+  background: var(--switcher-background-color);
+  outline: none;
+  transition: 0.3s;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+
+  // Yeah, they share the same styles, but
+  // "selector 1, selector 2" just doesn't properly work in this case
+  @mixin slider {
+    width: 1rem;
+    height: 1rem;
+    background: var(--button-accent-background-color);
+    border-radius: 1rem;
+    transition: 0.3s;
+  }
+
+  &::-webkit-slider-thumb {
+    @include slider;
+    appearance: none;
+  }
+
+  &::-moz-range-thumb {
+    @include slider;
+  }
+
+  &:hover::-webkit-slider-thumb {
+    background: var(--button-accent-background-hover);
+    transform: scale(0.85);
+  }
+
+  &:hover::-moz-range-thumb {
+    background: var(--button-accent-background-hover);
+    transform: scale(0.85);
+  }
+}
+
+.switcher-label {
+  padding-bottom: 0.5rem;
+  color: var(--switcher-text-color);
+  font-family: var(--font-family);
+  font-size: 0.875rem; // 14px
+  user-select: none;
+}
+
+.switcher-values {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.75rem 0.25rem; // 12px 4px
+  color: var(--switcher-text-color);
+  font-family: var(--font-family);
+  font-size: 0.875rem; // 14px
+  user-select: none;
+}
+
+#calculator-container {
+  position: relative;
+}
+
+#first-operand,
+#operation {
+  color: var(--screen-text-color);
+  font-family: var(--font-family);
+
+  font-size: 32px;
+  position: absolute;
+  z-index: 1;
+  text-align: right;
+
+  top: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 85%;
+  opacity: 0;
+  animation: test 3s ease infinite;
+  transition: 0.3s;
+
+  @media screen and (max-width: globals.$calculator-width) {
+    font-size: 16px;
+  }
+}
+
+#first-operand {
+  right: 3rem;
+  @media screen and (max-width: globals.$calculator-width) {
+    right: 2.5rem;
+  }
+}
+
+#operation {
+  right: 1.5rem;
+}
+
+#calculator-container input {
+  width: calc(100%);
+  height: 128px;
+  background-color: var(--screen-background-color);
+  color: var(--screen-text-color);
+  border-radius: 0.5rem;
+  font-size: 54px;
+  font-family: var(--font-family);
+  padding: 0 1.5rem;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  outline: none;
+  border: none;
+  position: relative;
+
+  @media screen and (max-width: globals.$calculator-width) {
+    height: 88px;
+    font-size: 40px;
+  }
+}
+
+#calculator-container .text-move-down {
+  padding-top: 3rem;
+  @media screen and (max-width: globals.$calculator-width) {
+    padding-top: 2rem;
+  }
+}
+
+.keypad {
+  background: var(--keypad-background-color);
+  padding: 1.5rem; // 24px
+  border-radius: 0.5rem; // 8px
+  display: grid;
+  grid: repeat(5, 1fr) / repeat(4, 1fr);
+  gap: 1.5rem; // 24px
+  transition: 0.3s;
+
+  @media screen and (max-width: globals.$calculator-width) {
+    gap: 1rem; // 16px
+  }
+}
+
+button {
+  height: 4rem;
+  background: var(--button-background-color);
+  color: var(--button-text-color);
+  font-family: var(--font-family);
+  font-size: 2rem; // 32px
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 -4px 0 var(--button-shadow-color) inset;
+  border-radius: 0.5rem; // 8px
+  transition: 0.3s;
+  transform: scale(1);
+  user-select: none;
+
+  &:hover {
+    transform: scale(0.95);
+    background: var(--button-background-hover);
+  }
+
+  &:active {
+    transform: scale(0.85);
+  }
+}
+
+#reset {
+  grid-column: 1 / 3;
+}
+
+#equals {
+  grid-column: 3 / 5;
+}
+
+#del,
+#reset {
+  background: var(--button-special-background-color);
+  color: var(--button-special-text-color);
+  box-shadow: 0 -4px 0 var(--button-special-shadow-color) inset;
+
+  &:hover {
+    background: var(--button-special-background-hover);
+  }
+}
+
+#equals {
+  background: var(--button-accent-background-color);
+  color: var(--button-accent-text-color);
+  box-shadow: 0 -4px 0 var(--button-accent-shadow-color) inset;
+
+  &:hover {
+    background: var(--button-accent-background-hover);
+  }
+}
+
+@media screen and (max-width: globals.$calculator-width) {
+  #del,
+  #reset,
+  #equals {
+    font-size: 24px;
+  }
+}
+
+footer,
+details {
+  margin-top: 1.5rem; // 24px
+  display: block;
+  width: 100%;
+  max-width: globals.$calculator-width;
+  background-color: var(--keypad-background-color);
+  padding: 1.5rem; // 24px
+  border-radius: 0.5rem; // 8px
+  font-family: var(--font-family);
+  font-size: 1.25rem; // 24px
+  transition: 0.3s;
+
+  @media screen and (max-width: globals.$calculator-width) {
+    font-size: 1rem;
+  }
+
+  p {
+    text-align: center;
+    color: var(--footer-text-color);
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    color: var(--footer-link-color);
+    transition: 0.3s;
+    display: inline-block;
+
+    &:hover {
+      color: var(--footer-link-hover);
+      transform: scale(0.95);
+    }
+
+    &:active {
+      transform: scale(0.85);
+    }
+  }
+}
+
+::selection {
+  background-color: var(--selection-color);
+}
+
+.highlight,
+.highlight:hover {
+  background: var(--button-special-background-hover);
+  box-shadow: none;
+  color: var(--button-special-text-color);
+  font-size: 54px;
+
+  @media screen and (max-width: globals.$calculator-width) {
+    font-size: 40px;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+// https://stackoverflow.com/questions/38213329/how-to-add-css3-transition-with-html5-details-summary-tag-reveal
+details {
+  text-align: center;
+}
+
+details summary {
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  color: var(--footer-link-color);
+}
+
+details summary:hover {
+  color: var(--footer-link-hover);
+  transform: scale(0.95);
+}
+
+details summary:active {
+  color: var(--footer-link-hover);
+  transform: scale(0.85);
+}
+
+details[open] summary {
+  margin-bottom: 1rem;
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details p {
+  padding-top: 1rem;
+  margin: 1rem;
+  text-align: left;
+  line-height: 125%;
+}
+
+.key {
+  display: inline-block;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  user-select: none;
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 900;
+}
+
+.key:hover {
+  transform: scale(0.95);
+  background: var(--button-background-hover);
+}
+
+.key:active {
+  transform: scale(0.85);
+}
+
+.key-special {
+  background: var(--button-special-background-color);
+  color: var(--button-special-text-color);
+}
+
+.key-special:hover {
+  background: var(--button-special-background-hover);
+}
+
+.key-accent {
+  background: var(--button-accent-background-color);
+  color: var(--button-accent-text-color);
+}
+
+.key-accent:hover {
+  background: var(--button-accent-background-hover);
+}
