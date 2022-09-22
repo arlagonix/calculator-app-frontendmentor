@@ -1,11 +1,5 @@
 # Calculator App
 
-<h3 align="center">
-  <strong>
-    <a href="https://arlagonix.github.io/projects/calculator-app-main/public">Open Demo in Github Pages</a>
-  </strong>
-</h3>
-
 <p align="center">
   <img src="./docs/images/results/theme1_big.jpg" width="100%">
 </p>
