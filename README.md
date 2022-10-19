@@ -1,4 +1,7 @@
-# Calculator App
+<h1 align="center">Calculator App</h1>
+<p align="center">
+ Coded with <code>HTML</code>, <code>SCSS</code>, <code>JavaScript</code>
+</p>
 
 <p align="center">
   <img src="./docs/images/results/theme1_big.jpg" width="100%">
